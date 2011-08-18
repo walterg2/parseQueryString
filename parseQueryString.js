@@ -3,7 +3,10 @@
 		this.params = {};
 		var qs = location.search.substring(1, location.search.length),
 		i = 0,
-		args;
+		args,
+		pair,
+		name
+		value;
 		if (qs.length > 0) {
 			// Turn <plus> back to <space>
 			// See:
@@ -13,8 +16,8 @@
 			args = qs.split('&');
 			// split out each name=value pair
 			for ( i = 0; i < args.length; i = i + 1) {
-				var pair = args[i].split('='),
-				name = decodeURIComponent(pair[0]),
+				pair = args[i].split('=');
+				name = decodeURIComponent(pair[0]);
 				value = (pair.length === 2) ? decodeURIComponent(pair[1]) : null;
 				this.params[name] = value;
 			}

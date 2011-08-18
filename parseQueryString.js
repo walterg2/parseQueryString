@@ -13,9 +13,9 @@
 			args = qs.split('&');
 			// split out each name=value pair
 			for ( i = 0; i < args.length; i = i + 1) {
-				var pair = args[i].split('=');
-				var name = decodeURIComponent(pair[0]);
-				var value = (pair.length === 2) ? decodeURIComponent(pair[1]) : null;
+				var pair = args[i].split('='),
+				name = decodeURIComponent(pair[0]),
+				value = (pair.length === 2) ? decodeURIComponent(pair[1]) : null;
 				this.params[name] = value;
 			}
 		}

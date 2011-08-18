@@ -50,4 +50,4 @@
 	};
 
 	window.parseQueryString = parseQueryString;
-})();
+}());

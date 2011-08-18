@@ -1,11 +1,11 @@
-( function() {
-	function queryStringConstructor() {
+(function() {
+	function QueryStringConstructor() {
 		this.params = {};
 		var qs = location.search.substring(1, location.search.length),
 		i = 0,
 		args,
 		pair,
-		name
+		name,
 		value;
 		if (qs.length > 0) {
 			// Turn <plus> back to <space>
@@ -25,10 +25,10 @@
 		return this;
 	}
 	function parseQueryString() {
-		return new queryStringConstructor(arguments);
+		return new QueryStringConstructor(arguments);
 	}
 
-	queryStringConstructor.prototype = {
+	QueryStringConstructor.prototype = {
 		getValue : function(key, defaultText) {
 			var value = this.params[key];
 			return (value !== null) ? value : defaultText;
@@ -40,12 +40,14 @@
 		getKeys : function() {
 			var keys = [],
 			key;
-			for ( key in this.params) {
-				keys.push(key);
+			for (key in this.params) {
+				if (typeof key === "string") {
+					keys.push(key);
+				}
 			}
 			return keys;
 		}
-	}
+	};
 
 	window.parseQueryString = parseQueryString;
 })();

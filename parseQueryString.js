@@ -1,12 +1,13 @@
-(function() {
+(function () {
+	"use strict";
 	function QueryStringConstructor() {
 		this.params = {};
 		var qs = location.search.substring(1, location.search.length),
-		i = 0,
-		args,
-		pair,
-		name,
-		value;
+			i = 0,
+			args,
+			pair,
+			name,
+			value;
 		if (qs.length > 0) {
 			// Turn <plus> back to <space>
 			// See:
@@ -15,7 +16,7 @@
 			// parse out name/value pairs separated via &
 			args = qs.split('&');
 			// split out each name=value pair
-			for ( i = 0; i < args.length; i = i + 1) {
+			for (i = 0; i < args.length; i = i + 1) {
 				pair = args[i].split('=');
 				name = decodeURIComponent(pair[0]);
 				value = (pair.length === 2) ? decodeURIComponent(pair[1]) : null;
@@ -29,17 +30,17 @@
 	}
 
 	QueryStringConstructor.prototype = {
-		getValue : function(key, defaultText) {
+		getValue: function (key, defaultText) {
 			var value = this.params[key];
 			return (value !== null) ? value : defaultText;
 		},
-		contains : function(key) {
+		contains: function (key) {
 			var value = this.params[key];
 			return (value !== null);
 		},
-		getKeys : function() {
+		getKeys: function () {
 			var keys = [],
-			key;
+				key;
 			for (key in this.params) {
 				if (typeof key === "string") {
 					keys.push(key);

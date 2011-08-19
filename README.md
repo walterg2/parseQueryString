@@ -5,9 +5,9 @@ Call it using:
 
 ## Examples
 ```javascript
-parseQueryString.getKeys();
-parseQueryString.contains("someKey");
-parseQueryString.getValue("someValue");
+parseQueryString.getKeys(); // Returns an array of keys from the query string
+parseQueryString.contains("someKey"); // Returns true/false if the key exists in the query string
+parseQueryString.getValue("someValue", "default Text"); // Returns the value for a given key or the default text if the key doesn't exist
 ```
 
 ## More information:

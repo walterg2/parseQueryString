@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Parse Query String Examples</title>
+	</head>
+	<body>
+		<article>
+		<h1>Parse Query String</h1>
+		<p>Steps to run:
+			<ol>
+				<li>Run this file from your webserver</li>
+				<li>Update the file to include a query string</li>
+				<li>Be glorified by the results</li>
+			</ol>
+		</p>
+		<p>Key/Value pairs:
+			<ul id="queryStringResults">
+			</ul>
+		</p>
+		<p>Does this query string contain a value for key "myKey"? <span id="containsAnswer"></span>
+		</p>
+		</article>
+		<script src="parseQueryString.js"></script>
+		<script>
+var queryStringKeys = parseQueryString.getKeys(),
+	resultsObject = document.getElementById("queryStringResults"),
+	answerObject = document.getElementById("containsAnswer"),
+	newResult,
+	i = 0;
+
+for (i; i < queryStringKeys.length; i++) {
+	newResult = document.createElement("li");
+	newResult.innerHTML = "Key: " + queryStringKeys[i] + " -- Value: " + parseQueryString.getValue(queryStringKeys[i],"No Value Defined");
+	resultsObject.appendChild(newResult);
+}
+
+if (parseQueryString.contains("myKey")) {
+	answerObject.innerHTML = 'Yes';
+} else {
+	answerObject.innerHTML = 'No';
+}
+		</script>
+	</body>
+</html>
